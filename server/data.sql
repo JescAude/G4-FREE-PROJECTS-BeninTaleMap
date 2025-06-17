@@ -1,15 +1,26 @@
-create if not exists BeninTaleMap;
-use BeninTaleMap;
+CREATE DATABASE IF NOT EXISTS BeninTaleMap;
+USE BeninTaleMap;
 
-create table city (
-    name varchar(100) not null,
-    myths varchar(1000) [],
-    origin varchar(100) not null,
+CREATE TABLE country (
+    name VARCHAR(100) NOT NULL,
+    cities TEXT,
+    population INTEGER,
+    PRIMARY KEY (name)
+);
+
+CREATE TABLE city (
+    name VARCHAR(100) NOT NULL,
+    myths TEXT,
+    origin VARCHAR(100) NOT NULL,
+    PRIMARY KEY (name),
     FOREIGN KEY (origin) REFERENCES country(name)
 );
 
-create table country (
-    name varchar(100) not null,
-    cities varchar(100) [],
-    population integer
-);
+-- INSERT INTO country (name, cities, population) VALUES
+-- ('Bénin', '["Porto-Novo", "Abomey", "Ouidah"]', 13600000),
+-- ('Nigeria', '["Benin City"]', 223800000);
+
+-- INSERT INTO city (name, myths, origin) VALUES
+-- ('Porto-Novo', '["Mythe du roi Toffa qui a signé un pacte avec les esprits", "Légende des esprits protecteurs de Hogbonu"]', 'Bénin'),
+-- ('Abomey', '["Histoire des bas-reliefs des palais royaux", "Légende du roi Behanzin contre les colons"]', 'Bénin'),
+-- ('Ouidah', '["Serpent sacré de Kpassè", "Mythe de la Porte du Non-Retour"]', 'Bénin');
