@@ -1,0 +1,25 @@
+/*
+** EPITECH PROJECT, 2025
+** G4-FREE-PROJECTS-BeninTaleMap
+** File description:
+** Popup
+*/
+
+.popup-inner {
+    width: 500px;
+    height: 200px;
+    background-color: #e88459;
+    padding: 20px;
+    position: relative;
+    border-radius: 25px;
+}
+
+.popup-inner button {
+    background: none;
+    position: absolute;
+    top: 25px;
+    right: 12px;
+    font-size: 25px;
+    border: none;
+    cursor: pointer;
+}

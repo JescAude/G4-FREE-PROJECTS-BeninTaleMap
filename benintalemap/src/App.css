@@ -1,3 +1,13 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+** EPITECH PROJECT, 2025
+** G4-FREE-PROJECTS-BeninTaleMap
+** File description:
+** App
+*/
+
+.popup-infos {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    position: absolute;
+    top: 8px;
+}

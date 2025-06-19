@@ -1,0 +1,41 @@
+/*
+** EPITECH PROJECT, 2025
+** G4-FREE-PROJECTS-BeninTaleMap
+** File description:
+** Searchbar
+*/
+
+.searchbar {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    width: 50%;
+    max-width: 600px;
+}
+
+.searchbar input {
+    width: 100%;
+    border: 2px solid rgb(0, 0, 0);
+    text-align: center;
+    padding: 5px;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+.search-icon {
+    color: black;
+    position: absolute;
+    left: 470px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}

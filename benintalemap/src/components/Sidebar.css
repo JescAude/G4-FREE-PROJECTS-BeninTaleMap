@@ -1,0 +1,116 @@
+/*
+** EPITECH PROJECT, 2025
+** G4-FREE-PROJECTS-BeninTaleMap
+** File description:
+** Sidebar
+*/
+
+.sidebar {
+    position: fixed;
+    width: 270px;
+    height: 100vh;
+    background-color: #e88459;
+    box-sizing: border-box;
+    padding: 20px;
+    left: 0;
+    top: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    transition: width 0.3s ease;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.sidebar.closed {
+    width: 80px;
+    padding: 20px 10px;
+}
+
+.sidebar.open {
+    width: 200px;
+    padding: 20px;
+}
+
+.open-btn {
+    position: absolute;
+    left: 13px;
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+    color: black;
+    z-index: 1100;
+}
+
+.close-btn {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: black;
+    font-size: 20px;
+    cursor: pointer;
+;
+}
+
+.title {
+    color: black;
+    margin-bottom: 20px;
+    font-size: 23px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    margin: 15px 0;
+}
+
+.menu a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    right: 1px;
+    left: 2px;
+    position: relative;
+}
+
+.icon {
+    position: relative;
+    margin-right: 8px;
+    margin-bottom: 2px;
+    top: 5px;
+    color: black;
+}
+
+.home-reduced-sidebar {
+    background: none;
+    border: none;
+    position: absolute;
+    color: black;
+    cursor: pointer;
+    top: 80px;
+    font-size: 25px;
+}
+
+.settings-reduced-sidebar {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 150px;
+    color: black;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.sidebar-logo {
+    position: relative;
+    width: 170px;
+    right: 40px;
+    height: auto;
+    display: block;
+    margin: 0 auto 5px auto;
+}

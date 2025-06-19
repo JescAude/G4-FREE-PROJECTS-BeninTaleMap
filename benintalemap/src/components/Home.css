@@ -1,0 +1,131 @@
+/*
+** EPITECH PROJECT, 2025
+** G4-FREE-PROJECTS-BeninTaleMap
+** File description:
+** Home
+*/
+
+.home-container {
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.intro-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.intro-section h1 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.go-to-map-btn {
+    margin-top: 20px;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    background-color: #009688;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.go-to-map-btn:hover {
+    background-color: #00796b;
+}
+
+.about-section {
+    max-width: 700px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: #222;
+}
+
+.about-section p {
+    font-size: 1.7rem;
+    line-height: 1.6;
+}
+
+.team-section {
+    text-align: center;
+}
+
+.team-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.team-member {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    transition: transform 0.3s;
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.team-photo {
+    width: 140px;
+    height: 180px;
+    object-fit: cover;
+    color: #e88459;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+:root {
+  --orange-clair: #e88459;
+  --orange-clair-hover: #e88459;
+  --texte-principal: #333333;
+  --fond-principal: #fffaf0;
+}
+
+.home-container {
+    background-color: var(--fond-principal);
+    color: var(--texte-principal);
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.go-to-map-btn {
+    background-color: var(--orange-clair);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.go-to-map-btn:hover {
+    background-color: var(--orange-clair-hover);
+}
+
+.intro-section h1,
+.about-section h2,
+.team-section h2 {
+    color: var(--orange-clair);
+}
