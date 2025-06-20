@@ -18,7 +18,7 @@
 }
 
 .settings-container h2 {
-    color: #FFA726;
+    color: #e88459;
     margin-bottom: 25px;
     text-align: center;
 }
@@ -43,7 +43,7 @@
 
 .save-btn {
     padding: 10px 20px;
-    background-color: #FFA726;
+    background-color: #e88459;
     color: white;
     font-size: 1.1rem;
     border: none;
@@ -53,5 +53,5 @@
 }
 
 .save-btn:hover {
-    background-color: #FB8C00;
+    background-color: #e88459;
 }

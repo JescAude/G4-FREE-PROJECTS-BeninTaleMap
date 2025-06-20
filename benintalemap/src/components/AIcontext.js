@@ -15,7 +15,7 @@ export const NarratorProvider = ({ children }) => {
     const [theme, setTheme] = useState('clair');
 
 return (
-        <NarratorContext.Provider value={{ isNarratorEnabled, setIsNarratorEnabled , mapStyle, setMapStyle, theme, setTheme}}>
+        <NarratorContext.Provider value={{ isNarratorEnabled, setIsNarratorEnabled , mapStyle, setMapStyle, theme, setTheme }}>
             {children}
         </NarratorContext.Provider>
     );

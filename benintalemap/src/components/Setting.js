@@ -45,7 +45,7 @@ const Settings = () => {
                 checked={isNarratorEnabled}
                 onChange={toggleNarrator}
             />
-            Activer l'IA conteuse
+            Activer l'audio
         </label>
         </div>
 
