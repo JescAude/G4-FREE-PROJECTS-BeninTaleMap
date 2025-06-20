@@ -5,9 +5,18 @@
 ** App
 */
 
-.popup-infos {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20px;
-    position: absolute;
-    top: 8px;
+.theme-light {
+    --bg-color: #ffffff;
+    --text-color: #111111;
+}
+
+.theme-dark {
+    --bg-color: #1e1e1e;
+    --text-color: black;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
 }

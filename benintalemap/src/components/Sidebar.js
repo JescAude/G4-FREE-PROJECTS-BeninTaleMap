@@ -6,7 +6,7 @@
 */
 
 import React from "react";
-import {FaHome, FaCog, FaTimes, FaList, FaMapMarkerAlt} from 'react-icons/fa';
+import {FaHome, FaCog, FaTimes, FaList} from 'react-icons/fa';
 import './Sidebar.css';
 import { Link } from 'react-router-dom';
 
@@ -33,12 +33,6 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             <Link to="/settings" onClick={() => setIsOpen(false)}>
               <FaCog className="icon" />
               Settings
-            </Link>
-          </li>
-          <li>
-            <Link to="/map" onClick={() => setIsOpen(false)}>
-              <FaMapMarkerAlt className="icon" />
-              Registered Addresses
             </Link>
           </li>
         </ul>

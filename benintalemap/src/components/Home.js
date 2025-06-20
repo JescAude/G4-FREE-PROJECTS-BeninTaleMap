@@ -43,7 +43,7 @@ function Home() {
   },
   {
     name: "Tobi AGONGBONON",
-    role: "Développeur de l’IA narrative",
+    role: "Architecte du projet",
     photo: "/photo6.jpg",
   },
 ];

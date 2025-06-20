@@ -30,5 +30,4 @@ return props.trigger ? (
 
 }
 
-
 export default Popup;

@@ -1,12 +1,18 @@
+/*
+** EPITECH PROJECT, 2025
+** G4-FREE-PROJECTS-BeninTaleMap
+** File description:
+** Beninmap
+*/
+
 import React, { useEffect, useRef } from 'react';
 import { Map, config, MapStyle, NavigationControl, Popup, Marker } from '@maptiler/sdk';
+import { useNarrator } from './AIcontext';
 import '@maptiler/sdk/dist/maptiler-sdk.css';
 import './Beninmap.css';
-
 const MAPTILER_KEY = 'x8aIWdX8NggFcmbfZ2HU';
 config.apiKey = MAPTILER_KEY;
 
-// Fonction pour normaliser le nom du fichier audio
 function normalizeFileName(name) {
   return name
     .normalize('NFD')
@@ -15,10 +21,11 @@ function normalizeFileName(name) {
     + '.mp3';
 }
 
-export default function BeninMap3D() {
+export default function BeninMap3D({ searchTerm }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const currentAudioRef = useRef(null); // 🔊 Référence à l'audio en cours
+  const currentAudioRef = useRef(null);
+  const { isNarratorEnabled, mapStyle } = useNarrator();
 
   const villes = [
     { name: "Parakou", coords: [2.625, 9.345] },
@@ -37,54 +44,99 @@ export default function BeninMap3D() {
     { name: "Bohicon", coords: [2.0667, 7.1667] },
   ];
 
+  const getMapStyle = () => {
+    return mapStyle === 'satellite'
+      ? MapStyle.SATELLITE
+      : MapStyle.BASIC;
+  };
+
   useEffect(() => {
-    if (!map.current) {
-      map.current = new Map({
-        container: mapContainer.current,
-        style: MapStyle.BASIC,
-        center: [2.6, 9.2],
-        zoom: 7,
-        pitch: 45,
-        bearing: 0,
-        terrain: { source: 'maptiler-terrain' },
-      });
+    if (map.current) {
+      map.current.remove();
+      map.current = null;
+    }
 
-      map.current.addControl(new NavigationControl(), 'top-right');
+    map.current = new Map({
+      container: mapContainer.current,
+      style: getMapStyle(),
+      center: [2.6, 9.2],
+      zoom: 7,
+      pitch: 45,
+      bearing: 0,
+    });
 
-      map.current.on('load', () => {
-        villes.forEach((ville) => {
-          const marker = new Marker({ color: 'red' })
-            .setLngLat(ville.coords)
-            .setPopup(
-              new Popup().setHTML(`
-                <div class="popup-3d">
-                  <h3>${ville.name}</h3>
-                  <p>Ville du Bénin</p>
-                </div>`)
-            )
-            .addTo(map.current);
+    map.current.addControl(new NavigationControl(), 'top-right');
 
-          marker.getElement().addEventListener('click', () => {
-            // 🎵 Stopper l'audio précédent s’il existe
-            if (currentAudioRef.current) {
-              currentAudioRef.current.pause();
-              currentAudioRef.current.currentTime = 0;
-            }
+    map.current.on('style.load', () => {
+      if (map.current.getSource('maptiler-terrain')) {
+        map.current.setTerrain({ source: 'maptiler-terrain' });
+      }
+    });
 
-            const audioFile = normalizeFileName(ville.name);
-            const newAudio = new Audio(`/audio/${audioFile}`);
-            currentAudioRef.current = newAudio;
+    map.current.on('load', () => {
+      villes.forEach((ville) => {
+        const marker = new Marker({ color: 'red' })
+          .setLngLat(ville.coords)
+          .setPopup(
+            new Popup().setHTML(`
+              <div class="popup-3d">
+                <h3>${ville.name}</h3>
+                <p>Ville du Bénin</p>
+              </div>`)
+          )
+          .addTo(map.current);
 
-            newAudio.play().catch(err => {
-              console.error(`Erreur de lecture de l'audio pour ${ville.name}:`, err);
-            });
+        marker.getElement().addEventListener('click', () => {
+          if (!isNarratorEnabled) return;
+
+          if (currentAudioRef.current) {
+            currentAudioRef.current.pause();
+            currentAudioRef.current.currentTime = 0;
+          }
+
+          const audioFile = normalizeFileName(ville.name);
+          const newAudio = new Audio(`/audio/${audioFile}`);
+          currentAudioRef.current = newAudio;
+
+          newAudio.play().catch(err => {
+            console.error(`Erreur de lecture audio pour ${ville.name}:`, err);
           });
         });
       });
+    });
+  }, [mapStyle, isNarratorEnabled]);
+
+  useEffect(() => {
+    if (!searchTerm || !map.current) return;
+
+    const ville = villes.find(v =>
+      v.name.toLowerCase() === searchTerm.toLowerCase()
+    );
+    if (!ville) return;
+
+    const mapInstance = map.current;
+
+    const flyToVille = () => {
+      mapInstance.flyTo({
+        center: ville.coords,
+        zoom: 11,
+        speed: 1.4,
+        curve: 1.2,
+        essential: true,
+      });
+    };
+
+    if (mapInstance.isStyleLoaded()) {
+      flyToVille();
+    } else {
+      mapInstance.once('styledata', flyToVille);
     }
-  }, []);
+  }, [searchTerm]);
 
   return (
-    <div ref={mapContainer} style={{ width: '100vw', height: '100vh', position: 'relative' }} />
+    <div
+      ref={mapContainer}
+      style={{ width: '100vw', height: '100vh', position: 'relative' }}
+    />
   );
 }
