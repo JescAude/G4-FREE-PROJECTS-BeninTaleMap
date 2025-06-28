@@ -133,7 +133,7 @@ This project was developed by a dedicated team of EPITECH students:
 | **Nuri ABLOU** | UI/UX Designer | Visual design, user experience |
 | **Ramdon OGOUYOMI** | Data Manager | Cultural data collection, validation |
 | **Romaric DEGA** | API Developer | Backend development, API endpoints |
-| **Tobi AGONGBONON** | AI Narrative Developer | Audio content, storytelling features |
+| **Tobi AGONGBONON** | AI Narrative Developer | Project Architecture, Audio content, storytelling features |
 
 ## 🛠️ Technical Stack
 
